@@ -1,0 +1,29 @@
+H, W = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(H)]
+
+import sys
+
+sys.setrecursionlimit(10**7)
+ans = 0
+
+
+def search(x, y, seen):
+    global ans
+
+    if A[y][x] in seen:
+        return
+
+    seen.add(A[y][x])
+
+    if x == W - 1 and y == H - 1:
+        ans += 1
+        return
+
+    if x < W - 1:
+        search(x + 1, y, set(seen))
+    if y < H - 1:
+        search(x, y + 1, set(seen))
+
+
+search(0, 0, set())
+print(ans)
