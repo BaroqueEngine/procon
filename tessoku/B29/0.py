@@ -1,14 +1,17 @@
-MOD = 10**9 + 7
-A, B = map(int, input().split())
+import sys
+mod = 10**9+7
+a, b = map(int, input().split())
 
-ans = 1
-while B > 0:
-    if B % 2 == 0:
-        ans = (ans * A) % MOD
+sys.setrecursionlimit(10**7)
+
+
+def f(a, b):
+    if b == 0:
+        return 1
+    if b % 2 == 0:
+        return f(a * a % mod, b // 2)
     else:
-        ans = ((ans * A) + A) % MOD
-    B //= 2
+        return f(a, b - 1) * a % mod
 
-print(ans)
 
-# NG
+print(f(a, b))
