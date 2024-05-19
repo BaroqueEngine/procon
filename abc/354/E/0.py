@@ -34,7 +34,7 @@ def f(sente, used):
         if sente:
             memo[used] = sente in results
         else:
-            memo[used] = not (sente in results)
+            memo[used] = (not sente in results)
     return memo[used]
 
 
